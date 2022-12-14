@@ -1,0 +1,39 @@
+- sign up
+ - happy path
+ - prevent duplicate user
+ - hash password
+ - verify password strength
+   - should contain uppercase letter
+   - should contain lowercase letter
+   - should contain number
+   - should contain special character
+   - should contain at least six characters
+   - should contain at most fifteen characters
+
+- sign in
+
+- create todo list
+  - happy path
+  - handle invalid user
+  - prevent duplicate todolist
+
+- create todo item
+  - happy path
+  - handle invalid user
+  - prevent duplicate todoitem
+
+- show todo list
+  - happy path
+  - handle invalid user
+
+- change item description
+  - happy path
+  - handle duplicate item
+
+- change item priority
+- remove item from todo list
+
+- mark item as done
+  - should push item to the end of the list
+
+- remove todo list
