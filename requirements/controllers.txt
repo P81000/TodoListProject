@@ -1,0 +1,14 @@
+- user creation endpoint
+    -> url: /api/users
+    -> method: POST
+    -> body: {
+        "name": "name",
+        "email": "email",
+        "password": "password"
+    }
+    -> response: 
+    status_code: 201
+    {
+        "name": "name",
+        "email": "email"
+    }
