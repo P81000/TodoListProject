@@ -1,4 +1,6 @@
 from src.usecases.errors.invalidusererror import InvalidUserError
+from src.usecases.errors.notodolisterror import NoTodoListError
+
 class RemoveTodoList:
     def __init__(self, todolist_repo, user_repo):
         self.todolist_repo = todolist_repo
@@ -9,4 +11,6 @@ class RemoveTodoList:
         user = self.user_repo.find_by_email(user_email)
         if not user:
             raise InvalidUserError()
+        if user and not todolist:
+            raise NoTodoListError()
         self.todolist_repo.delete(user_email)

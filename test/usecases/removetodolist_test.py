@@ -6,6 +6,7 @@ from src.usecases.createtodoitem import CreateTodoItem
 from src.usecases.signup import SignUp
 from src.usecases.removetodolist import RemoveTodoList
 from src.usecases.errors.invalidusererror import InvalidUserError
+from src.usecases.errors.notodolisterror import NoTodoListError
 from src.usecases.createtodolist import TodoList
 from src.usecases.createtodoitem import TodoItem
 import pytest
@@ -33,4 +34,16 @@ def test_remove_todo_list_with_invalid_user():
     user_email = 'invalid@email.com'
     usecase = RemoveTodoList(todolist_repo, user_repo)
     with pytest.raises(InvalidUserError):
+        usecase.perform(user_email)
+
+def test_remove_todo_list_with_no_todolist():
+    user_repo = InMemoryUserRepository()
+    todolist_repo = InMemoryTodoListRepository()
+    hash_service = FakeHashService()
+    user_name = 'Joe Doe'
+    user_email = 'joe@doe.com'
+    user_password = 'test1234TEST&'
+    SignUp(user_repo, hash_service).perform(user_name, user_email, user_password)
+    usecase = RemoveTodoList(todolist_repo, user_repo)
+    with pytest.raises(NoTodoListError):
         usecase.perform(user_email)
