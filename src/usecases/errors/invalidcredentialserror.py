@@ -1,2 +1,4 @@
 class InvalidCredentialsError(Exception):
-  pass
+  def __init__(self):
+    message = "Invalid Credentials."
+    super().__init__(message)
